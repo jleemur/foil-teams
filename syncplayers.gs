@@ -1,7 +1,8 @@
 // --- CHANGE THESE AS NEEDED ---
+// link to yearly attendance sheet
 const ATTENDANCE_ID = "";
-const ATTENDANCE_SHEET_NAME = "";
-const MASTER_SHEET_NAME = "";
+const ATTENDANCE_SHEET_NAME = "Attendance";
+const MASTER_SHEET_NAME = "25/26";
 
 function syncPlayersAndHighlightMissingSkills() {
   const attendanceSS = SpreadsheetApp.openById(ATTENDANCE_ID);
@@ -18,7 +19,8 @@ function syncPlayersAndHighlightMissingSkills() {
   }
 
   // --- GET ATTENDEES ---
-  const attendeeData = attendanceSheet.getRange("A5:A").getValues().flat().filter(x => x);  // Change this range if needed
+  // change "A5" if attendance sheet formatting changes
+  const attendeeData = attendanceSheet.getRange("A5:A").getValues().flat().filter(x => x);
   
   // --- GET EXISTING MASTER PLAYERS ---
   const masterData = masterSheet.getLastRow() > 1 ? masterSheet.getRange(2, 1, masterSheet.getLastRow()-1, 2).getValues() : [];
@@ -58,7 +60,7 @@ function syncPlayersAndHighlightMissingSkills() {
 
   // --- SORT ROWS & APPLY FILTER ---
   if (masterSheet.getLastRow() > 2) { // only sort if there is data
-    masterSheet.getRange(2, 1, masterSheet.getLastRow() - 1, 2).sort([{column: 1, ascending: true}]);
+    masterSheet.getRange(2, 1, masterSheet.getLastRow() - 1, 2).sort([{column: 2, ascending: false}]);
   }
   if (masterSheet.getFilter()) masterSheet.getFilter().remove();
   masterSheet.getRange(1, 1, masterSheet.getLastRow(), 2).createFilter();
