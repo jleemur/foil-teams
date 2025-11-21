@@ -1,7 +1,7 @@
 // --- CHANGE THESE AS NEEDED ---
-// link to yearly attendance sheet
 const ATTENDANCE_ID = "";
 const ATTENDANCE_SHEET_NAME = "Attendance";
+const ATTENDANCE_FIRST_NAME = "A3";
 const MASTER_SHEET_NAME = "25/26";
 
 function syncPlayersAndHighlightMissingSkills() {
@@ -19,8 +19,7 @@ function syncPlayersAndHighlightMissingSkills() {
   }
 
   // --- GET ATTENDEES ---
-  // change "A5" if attendance sheet formatting changes
-  const attendeeData = attendanceSheet.getRange("A5:A").getValues().flat().filter(x => x);
+  const attendeeData = attendanceSheet.getRange(`${ATTENDANCE_FIRST_NAME}:A`).getValues().flat().filter(x => x);
   
   // --- GET EXISTING MASTER PLAYERS ---
   const masterData = masterSheet.getLastRow() > 1 ? masterSheet.getRange(2, 1, masterSheet.getLastRow()-1, 2).getValues() : [];
