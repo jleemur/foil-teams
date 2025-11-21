@@ -2,7 +2,7 @@
 const ATTENDANCE_ID = "";
 const ATTENDANCE_SHEET_NAME = "Attendance";
 const ATTENDANCE_FIRST_NAME = "A3";
-const MASTER_SHEET_NAME = "25/26";
+const MASTER_SHEET_NAME = "Sheet1";
 
 function syncPlayersAndHighlightMissingSkills() {
   const attendanceSS = SpreadsheetApp.openById(ATTENDANCE_ID);
