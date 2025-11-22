@@ -4,7 +4,7 @@ const ATTENDANCE_SHEET_NAME = "Attendance";
 const ATTENDANCE_FIRST_NAME = "A3";
 const MASTER_SHEET_NAME = "Sheet1";
 
-function syncPlayersAndHighlightMissingSkills() {
+function syncPlayers() {
   const attendanceSS = SpreadsheetApp.openById(ATTENDANCE_ID);
   const attendanceSheet = attendanceSS.getSheetByName(ATTENDANCE_SHEET_NAME);
 
@@ -69,7 +69,7 @@ function syncPlayersAndHighlightMissingSkills() {
 
 function onOpen() {
   SpreadsheetApp.getUi()
-    .createMenu("Team Tools")
-    .addItem("Sync Players", "syncPlayersAndHighlightMissingSkills")
+    .createMenu("Sync Players")
+    .addItem("Sync Now", "syncPlayers")
     .addToUi();
 }
