@@ -69,7 +69,7 @@ function syncPlayers() {
 
 function onOpen() {
   SpreadsheetApp.getUi()
-    .createMenu("Sync Players")
-    .addItem("Sync Now", "syncPlayers")
+    .createMenu("Code")
+    .addItem("Sync Players", "syncPlayers")
     .addToUi();
 }
