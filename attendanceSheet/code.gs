@@ -65,8 +65,6 @@ function getNextDate() {
 
 function promptForDate() {
   const ui = SpreadsheetApp.getUi();
-
-  // --- Get today's date in the sheet's timezone ---
   const now = new Date();
   const todayStr = Utilities.formatDate(now, timeZone, "yyyy-MM-dd").toString();
 
