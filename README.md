@@ -8,3 +8,4 @@ It solves the constant headache of last-minute attendance changes or players sho
 - **Attendance sheet (public)**: Here you can view players attending, and a history of win/loss throughout the season.
 - **Master sheet (private)**: Here you can view a hidden skill level per player used to help balance teams.
 
+[The sheets are located here](https://drive.google.com/drive/folders/1zdIqyd5jz0Iht8OhTeNTmrL0CitNgnli)
