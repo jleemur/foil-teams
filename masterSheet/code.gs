@@ -4,6 +4,11 @@ const ATTENDANCE_SHEET_NAME = "Attendance";
 const ATTENDANCE_FIRST_NAME = "A3";
 const MASTER_SHEET_NAME = "Sheet1";
 
+// Run from deployment
+function doGet(e) {
+  syncPlayers();
+}
+
 function syncPlayers() {
   const attendanceSS = SpreadsheetApp.openById(ATTENDANCE_ID);
   const attendanceSheet = attendanceSS.getSheetByName(ATTENDANCE_SHEET_NAME);
