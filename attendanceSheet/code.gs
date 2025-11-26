@@ -12,6 +12,7 @@ const PLAYER_WIN_RANGE = "A3:D";
 const PLAYER_SKILL_RANGE = "A2:B";
 const WEIGHT_WIN_PERCENTAGE = 1;
 const WEIGHT_SKILL_LEVEL = 1;
+const DEFAULT_SKILL = 5;
 
 // --- SETUP REFERENCES ---
 const masterSS = SpreadsheetApp.openById(MASTER_ID);
@@ -169,11 +170,11 @@ function getPlayerSkillValue() {
     const name = player[0];
     let skill = player[1];
     if (!skill || skill == "NEW") {
-      skill = 5;
+      skill = DEFAULT_SKILL;
     }
 
     if (name != '') {
-      skillLookup[name] = skill * 10;
+      skillLookup[name] = skill;
     }
   });
 
@@ -184,7 +185,12 @@ function getAttendeeBalancingData(attendees, playerWinPercentage, playerSkillDat
   const attendeeBalancingData = {};
 
   attendees.forEach(attendee => {
-    attendeeBalancingData[attendee] = (playerWinPercentage[attendee] * WEIGHT_WIN_PERCENTAGE) + (playerSkillData[attendee] * WEIGHT_SKILL_LEVEL);
+    // edge case: attendee does not exist in master sheet
+    if (!playerSkillData[attendee]) {
+      playerSkillData[attendee] = DEFAULT_SKILL;
+    }
+
+    attendeeBalancingData[attendee] = (playerWinPercentage[attendee] * WEIGHT_WIN_PERCENTAGE) + (playerSkillData[attendee] * 10 * WEIGHT_SKILL_LEVEL);
   });
 
   return attendeeBalancingData;
