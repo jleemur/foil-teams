@@ -10,8 +10,8 @@ const TEAMS_WHITE_RANGE = "5:19";
 const TEAMS_DARK_RANGE = "21:35";
 const PLAYER_WIN_RANGE = "A3:D";
 const PLAYER_SKILL_RANGE = "A2:B";
-const WEIGHT_WIN_PERCENTAGE = 1;
-const WEIGHT_SKILL_LEVEL = 1;
+const WEIGHT_WIN_PERCENTAGE = 1/3;
+const WEIGHT_SKILL_LEVEL = 2/3;
 const DEFAULT_SKILL = 5;
 
 // --- SETUP REFERENCES ---
@@ -188,7 +188,7 @@ function getAttendeeBalancingData(attendees, playerWinPercentage, playerSkillDat
       playerSkillData[attendee] = DEFAULT_SKILL;
     }
 
-    attendeeBalancingData[attendee] = (playerWinPercentage[attendee] * WEIGHT_WIN_PERCENTAGE) + (playerSkillData[attendee] * 10 * WEIGHT_SKILL_LEVEL);
+    attendeeBalancingData[attendee] = Number(((playerWinPercentage[attendee] * WEIGHT_WIN_PERCENTAGE) + (playerSkillData[attendee] * 10 * WEIGHT_SKILL_LEVEL)).toFixed(2));
   });
 
   return attendeeBalancingData;
